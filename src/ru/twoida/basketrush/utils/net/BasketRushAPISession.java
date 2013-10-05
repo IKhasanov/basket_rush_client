@@ -5,14 +5,19 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -28,7 +33,11 @@ public class BasketRushAPISession {
 			JSONObject jsn = null;
 			try {
 				Log.d("Request", uri);
-				jsn = sendPostRequest(uri.toString(), null);
+				List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+		        nameValuePairs.add(new BasicNameValuePair("id", "12345"));
+		        nameValuePairs.add(new BasicNameValuePair("stringdata", "AndDev is Cool!"));
+				
+				jsn = sendPostRequest(uri.toString(), new UrlEncodedFormEntity(nameValuePairs));
 			} catch (ClientProtocolException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
