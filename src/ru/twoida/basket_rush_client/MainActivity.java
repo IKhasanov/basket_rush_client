@@ -3,12 +3,17 @@ package ru.twoida.basket_rush_client;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.Toast;
 import ru.twoida.basket_rush_client.R;
 import ru.twoida.basketrush.activities.ListScreen;
+
+import com.google.android.gcm.GCMRegistrar;
+
 public class MainActivity extends Activity implements OnClickListener {
 	
 	Button btnFrstScr;
@@ -19,6 +24,21 @@ public class MainActivity extends Activity implements OnClickListener {
         setContentView(R.layout.activity_main);
     btnFrstScr = (Button) findViewById(R.id.btnFrstScr);
     btnFrstScr.setOnClickListener(this);
+    
+    GCMRegistrar.checkDevice(this);
+    GCMRegistrar.checkManifest(this);
+    
+    // Достаем идентификатор регистрации
+    final String regId = GCMRegistrar.getRegistrationId(this);
+    
+    if (regId.equals("")) { // Если отсутствует, то регистрируемся
+      GCMRegistrar.register(this);
+      Toast.makeText(this, "Зарегистрировано", 10);
+    } else {
+      Log.v("GCM", "Already registered: " + regId);
+      
+      Toast.makeText(this, "Заррегистрировано уже", 10);
+    }
         
     }
 
