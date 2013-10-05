@@ -9,6 +9,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import ru.twoida.basket_rush_client.R;
 import ru.twoida.basketrush.activities.ListActivity;
+import ru.twoida.basketrush.utils.net.BasketRushAPISession;
 public class MainActivity extends Activity implements OnClickListener {
 	
 	Button btnFrstScr;
@@ -19,6 +20,8 @@ public class MainActivity extends Activity implements OnClickListener {
         setContentView(R.layout.activity_main);
     btnFrstScr = (Button) findViewById(R.id.btnFrstScr);
     btnFrstScr.setOnClickListener(this);
+    BasketRushAPISession apiSession = new BasketRushAPISession();
+    apiSession.requestAccountCreation("+79179140000", "male", "+79033060000");
         
     }
 
