@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import ru.twoida.basket_rush_client.R;
-import ru.twoida.basketrush.activities.ListScreen;
+import ru.twoida.basketrush.activities.ListActivity;
 public class MainActivity extends Activity implements OnClickListener {
 	
 	Button btnFrstScr;
@@ -36,7 +36,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		// TODO Auto-generated method stub
 		 switch (v.getId()) {
 		    case R.id.btnFrstScr:
-		    	Intent intent = new Intent(this, ListScreen.class);
+		    	Intent intent = new Intent(this, ListActivity.class);
 		        startActivity(intent);
 		      break;
 		    default:

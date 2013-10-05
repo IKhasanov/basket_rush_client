@@ -21,7 +21,7 @@ public class InviteScreen extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		 switch (v.getId()) {
 		    case R.id.btnSelectPartner:
-		    	Intent intent = new Intent(this, ListScreen.class);
+		    	Intent intent = new Intent(this, ListActivity.class);
 		        startActivity(intent);
 		      break;
 		    default:

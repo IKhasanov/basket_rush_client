@@ -32,7 +32,7 @@
            
        </activity>
        
-       <activity android:name="ru.twoida.basketrush.activities.ListScreen"
+       <activity android:name="ru.twoida.basketrush.activities.ListActivity"
            android:label="@string/app_name"></activity>
        
     </application>
