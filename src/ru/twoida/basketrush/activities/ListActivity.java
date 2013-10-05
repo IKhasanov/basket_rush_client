@@ -11,7 +11,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class ListScreen extends Activity {
+public class ListActivity extends Activity {
 	
 	protected void onCreate (Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
