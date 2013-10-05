@@ -4,17 +4,8 @@
     <string name="app_name">Basket Rush</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="go_to_shop">Жена, я поехал в магазин</string>
 	<string-array name="names">
-	    <item>Молоко</item>
-	    <item>Хлеб</item>
-	    <item>Сигареты</item>
-	    <item>Пивас</item>
-	    <item>Квас</item>
-	    <item>Барабас</item>
-	    <item>Ягоды</item>
-	    <item>Петрушку</item>
-	    <item>Игрушку</item>
-	    <item>Укроп</item>
 	    <item>Циклоп</item>
 	    <item>Сахар</item>
 	</string-array>
