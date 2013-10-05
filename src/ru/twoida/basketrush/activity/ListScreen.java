@@ -1,4 +1,4 @@
-package ru.twoida.basket_rush_client_activity;
+package ru.twoida.basketrush.activity;
 
 import ru.twoida.basket_rush_client.R;
 import android.app.Activity;

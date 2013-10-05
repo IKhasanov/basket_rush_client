@@ -1,4 +1,4 @@
-package ru.twoida.utils.net;
+package ru.twoida.basketrush.utils.net;
 
 import java.io.BufferedReader;
 import java.io.IOException;
