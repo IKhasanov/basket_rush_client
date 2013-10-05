@@ -8,14 +8,15 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import ru.twoida.basket_rush_client.R;
-import ru.twoida.basket_rush_client_activity.FirstLaunchScreen;
+import ru.twoida.basket_rush_client_activity.ListScreen;
 public class MainActivity extends Activity implements OnClickListener {
+	
 	Button btnFrstScr;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.first_launch_screen);
     btnFrstScr = (Button) findViewById(R.id.btnFrstScr);
     btnFrstScr.setOnClickListener(this);
         
@@ -35,7 +36,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		// TODO Auto-generated method stub
 		 switch (v.getId()) {
 		    case R.id.btnFrstScr:
-		    	Intent intent = new Intent(this, FirstLaunchScreen.class);
+		    	Intent intent = new Intent(this, ListScreen.class);
 		        startActivity(intent);
 		      break;
 		    default:
