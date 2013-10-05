@@ -26,6 +26,10 @@
    		    android:label="@string/app_name">
    		    
    		</activity>
+       <activity android:name="ru.twoida.basket_rush_client_activity.InviteScreen"
+           android:label="@string/app_name">
+           
+       </activity>
     </application>
 
 </manifest>
