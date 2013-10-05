@@ -11,7 +11,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class ListScreen extends Activity {
+public class ListActivity extends Activity {
 	
 	protected void onCreate (Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
@@ -20,7 +20,7 @@ public class ListScreen extends Activity {
 		//String[] names = new String[] {"Кефир как на картинке", "Помидоры местные", "Сухарики Ядрен батон"};
 		
 		//--------------------------------------------МЕТОДЫ СПИСКА----------------------------
-		ListView lvMain = (ListView) findViewById(R.id.lvMain);
+		ListView lvMain = (ListView) findViewById(R.id.lvShoppingList);
 		
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.names, android.R.layout.simple_list_item_1);
 		lvMain.setAdapter(adapter);

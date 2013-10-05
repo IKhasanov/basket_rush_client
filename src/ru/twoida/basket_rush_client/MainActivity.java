@@ -10,8 +10,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 import ru.twoida.basket_rush_client.R;
-import ru.twoida.basketrush.activities.ListScreen;
-
+import ru.twoida.basketrush.activities.ListActivity;
+import ru.twoida.basketrush.utils.net.BasketRushAPISession;
 import com.google.android.gcm.GCMRegistrar;
 
 public class MainActivity extends Activity implements OnClickListener {
@@ -24,7 +24,8 @@ public class MainActivity extends Activity implements OnClickListener {
         setContentView(R.layout.activity_main);
     btnFrstScr = (Button) findViewById(R.id.btnFrstScr);
     btnFrstScr.setOnClickListener(this);
-    
+    BasketRushAPISession apiSession = new BasketRushAPISession();
+    apiSession.requestAccountCreation("+79179140000", "male", "+79033060000");
     GCMRegistrar.checkDevice(this);
     GCMRegistrar.checkManifest(this);
     
@@ -56,7 +57,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		// TODO Auto-generated method stub
 		 switch (v.getId()) {
 		    case R.id.btnFrstScr:
-		    	Intent intent = new Intent(this, ListScreen.class);
+		    	Intent intent = new Intent(this, ListActivity.class);
 		        startActivity(intent);
 		      break;
 		    default:
