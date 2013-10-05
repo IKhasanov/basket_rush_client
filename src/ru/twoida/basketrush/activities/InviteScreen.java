@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-public class InviteScreen extends Activity implements OnClickListener {
+public class InviteScreen extends BaseActivity implements OnClickListener {
 	Button btnSelectPartner; 
 	protected void onCreate (Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);

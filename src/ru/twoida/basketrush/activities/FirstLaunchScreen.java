@@ -8,7 +8,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import ru.twoida.basket_rush_client.R;
 
-public class FirstLaunchScreen extends Activity implements OnClickListener {
+public class FirstLaunchScreen extends BaseActivity implements OnClickListener {
 	
 	Button btnSelectYourSelf;
 	
