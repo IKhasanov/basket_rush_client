@@ -31,6 +31,8 @@ public class ListActivity extends BaseActivity {
 		
 		new GetTaskListTask().execute();
 		
+		//String[] names = new String[] {"Кефир как на картинке", "Помидоры местные", "Сухарики Ядрен батон"};
+		
 		//--------------------------------------------МЕТОДЫ СПИСКА----------------------------
 		ListView lvMain = (ListView) findViewById(R.id.lvShoppingList);
 		
@@ -76,7 +78,7 @@ public class ListActivity extends BaseActivity {
 		protected List<String> doInBackground(final Void... params) {
 			List<String> taskList = new ArrayList<String>();
 			
-			for (int i = 0; i < 4; i++) {
+			for (int i = 0; i < 10; i++) {
 				taskList.add("111");
 			}
 			
