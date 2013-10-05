@@ -1,4 +1,4 @@
-package ru.twoida.basketrush.activity;
+package ru.twoida.basketrush.activities;
 
 import android.app.Activity;
 import android.content.Intent;

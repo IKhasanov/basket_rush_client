@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import ru.twoida.basket_rush_client.R;
-import ru.twoida.basketrush.activity.ListScreen;
+import ru.twoida.basketrush.activities.ListScreen;
 public class MainActivity extends Activity implements OnClickListener {
 	
 	Button btnFrstScr;

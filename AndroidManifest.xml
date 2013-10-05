@@ -19,7 +19,7 @@
             android:label="@string/app_name" >
             
         </activity>
-   		<activity android:name="ru.twoida.basketrush.activity.FirstLaunchScreen"
+   		<activity android:name="ru.twoida.basketrush.activities.FirstLaunchScreen"
    		    android:label="@string/app_name">
    		    <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,12 +27,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
    		</activity>
-       <activity android:name="ru.twoida.basketrush.activity.InviteScreen"
+       <activity android:name="ru.twoida.basketrush.activities.InviteScreen"
            android:label="@string/app_name">
            
        </activity>
        
-       <activity android:name="ru.twoida.basketrush.activity.ListScreen"
+       <activity android:name="ru.twoida.basketrush.activities.ListScreen"
            android:label="@string/app_name"></activity>
        
     </application>
