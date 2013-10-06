@@ -1,11 +1,12 @@
 package ru.twoida.basketrush.activities;
 
-import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import ru.twoida.basket_rush_client.EnterPhoneActivity;
 import ru.twoida.basket_rush_client.R;
 
 public class FirstLaunchScreen extends BaseActivity implements OnClickListener {
@@ -22,12 +23,21 @@ public class FirstLaunchScreen extends BaseActivity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
+		SharedPreferences.Editor editor =  FirstLaunchScreen.this.settings.edit();
 		 switch (v.getId()) {
 		    case R.id.btnMale:
-		    	Intent intent = new Intent(this, InviteScreen.class);
-		        startActivity(intent);
+				editor.putString(GENDER, "male");
+				editor.commit();
+		    	
+		    	Intent intentMale = new Intent(this, InviteScreen.class);
+		        startActivity(intentMale);
 		      break;
+		    case R.id.btnFemale:
+				editor.putString(GENDER, "female");
+				editor.commit();
+
+		    	Intent intentFemale = new Intent(this, InviteScreen.class);
+		    	startActivity(intentFemale);
 		    default:
 		      break;
 		    }
