@@ -12,23 +12,51 @@
 	    android:layout_marginBottom="20dp">
 	</RelativeLayout>
 
-    <Button android:id="@+id/btnAddTask"
-         android:text="@string/add_task"
-        android:textSize="16dp"
-        android:textColor="#669900"
-        android:background="@drawable/btn_green"
-        android:layout_margin="7dp"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"/>
+	<RelativeLayout android:id="@+id/rlAddTask"
+        	android:layout_alignParentTop="true"
+        	android:layout_margin="7dp"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content">
+	    
+	        <Button android:id="@+id/btnAddTask"
+        	 android:text="@string/add_task"
+        	 android:gravity="left|center_vertical"
+        	android:textSize="16dp"
+        	android:textColor="#669900"
+        	android:background="@drawable/bar"
+        	android:layout_width="fill_parent"
+        	android:layout_height="wrap_content"/>
+	        
+	        <RelativeLayout android:id="@+id/rlEditText"
+	            android:visibility="gone"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content">
+	        <EditText android:id="@+id/etAddTask"
+	            android:hint=" "
+	            android:textSize="16dp"
+	            android:singleLine="true"
+	            android:imeOptions="actionDone"
+	            android:background="@drawable/input"
+	            android:layout_width="fill_parent"
+        		android:layout_height="wrap_content"/>
+	        <Button android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_centerVertical="true"
+	            android:background="@drawable/camera"
+	            android:layout_marginRight="11dp"
+	            android:layout_alignParentRight="true"/>
+	        </RelativeLayout>
+	        	        
+	</RelativeLayout>
     
 	<ListView
  	android:id="@+id/lvShoppingList"
- 	android:layout_below="@+id/btnAddTask"
  	android:paddingLeft="7dp"
  	android:paddingRight="7dp"
  	android:dividerHeight="8dp"
  	android:cacheColorHint="#00000000"
  	android:fadingEdge="none"
+ 	android:layout_below="@+id/rlAddTask"
  	android:layout_width="wrap_content"
  	android:layout_height="wrap_content">
 	</ListView>
