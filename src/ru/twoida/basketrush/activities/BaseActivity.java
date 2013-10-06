@@ -8,6 +8,7 @@ import android.view.Window;
 public abstract class BaseActivity extends Activity {
 	
 	protected final static String PREFERENCES_NAME = "BasketRush";
+	protected final static String sender_id = "127652006695";
 	
 	protected SharedPreferences settings = null;
 	
