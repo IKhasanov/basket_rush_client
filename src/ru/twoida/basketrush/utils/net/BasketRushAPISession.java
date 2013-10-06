@@ -18,9 +18,11 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import ru.twoida.basket_rush.models.Task;
 import ru.twoida.basket_rush.models.User;
 import android.util.Log;
 
@@ -41,7 +43,7 @@ public class BasketRushAPISession {
 		        nameValuePairs.add(new BasicNameValuePair("gender", gender));
 		        nameValuePairs.add(new BasicNameValuePair("partner_login",partnerLogin));
 				
-				jsn = sendPostRequest(uri.toString(), new UrlEncodedFormEntity(nameValuePairs));
+				jsn = sendPostRequest(uri.toString(), new UrlEncodedFormEntity(nameValuePairs,"utf-8"));
 			} catch (ClientProtocolException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -83,7 +85,7 @@ public class BasketRushAPISession {
 	       Log.d("Password", secretKey);
 			Log.d("Request",uri);
 			try {
-				jsn = sendPostRequest(uri.toString(), new UrlEncodedFormEntity(nameValuePairs));
+				jsn = sendPostRequest(uri.toString(), new UrlEncodedFormEntity(nameValuePairs,"utf-8"));
 			} catch (URISyntaxException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -97,18 +99,26 @@ public class BasketRushAPISession {
 		return jsn == null ? "" : jsn.toString();
 	}
 	
-	public JSONObject requestList(final String login, final String secretKey)
+	public List<Task> requestList(final String login, final String secretKey)
 	{
 		final String methodURI = "/users/list";
 		final String uri = formUriString(serverURI,methodURI);
 		JSONObject jsn = null;
+		
+		List<Task> result = new ArrayList<Task>();
 		
 		try {
 			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
 			nameValuePairs.add(new BasicNameValuePair("login",login));
 			nameValuePairs.add(new BasicNameValuePair("secret",secretKey));
 			try {
-				jsn = sendPostRequest(uri.toString(),new UrlEncodedFormEntity(nameValuePairs));
+				jsn = sendPostRequest(uri.toString(),new UrlEncodedFormEntity(nameValuePairs,"utf-8"));
+				JSONArray arr = jsn.getJSONArray("items");
+				for (int i = 0; i < arr.length(); i++) {
+					Task task = new Task();
+					task.mapTask(arr.getJSONObject(i));
+					result.add(task);
+				}
 			} catch (URISyntaxException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -120,7 +130,7 @@ public class BasketRushAPISession {
 			e.printStackTrace();
 		}
 		
-		return jsn;
+		return result;
 		
 	}
 	
@@ -137,7 +147,7 @@ public class BasketRushAPISession {
 			nameValuePairs.add(new BasicNameValuePair("secret",secretKey));
 			nameValuePairs.add(new BasicNameValuePair("item_id",itemId));
 			try {
-				jsn = sendPostRequest(uri.toString(),new UrlEncodedFormEntity(nameValuePairs));
+				jsn = sendPostRequest(uri.toString(),new UrlEncodedFormEntity(nameValuePairs,"utf-8"));
 			} catch (URISyntaxException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -170,7 +180,7 @@ public class BasketRushAPISession {
 				nameValuePairs.add(new BasicNameValuePair("data[photo]",photo));
 			}
 			try {
-				jsn = sendPostRequest(uri.toString(),new UrlEncodedFormEntity(nameValuePairs));
+				jsn = sendPostRequest(uri.toString(),new UrlEncodedFormEntity(nameValuePairs,"utf-8"));
 			} catch (URISyntaxException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
