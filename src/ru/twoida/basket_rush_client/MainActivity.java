@@ -17,7 +17,7 @@ import com.google.android.gcm.GCMRegistrar;
 public class MainActivity extends Activity implements OnClickListener {
 	
 	Button btnFrstScr;
-	
+	String sender_id = "127652006695";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,21 +26,26 @@ public class MainActivity extends Activity implements OnClickListener {
     btnFrstScr.setOnClickListener(this);
     BasketRushAPISession apiSession = new BasketRushAPISession();
     apiSession.requestAccountCreation("+79179140000", "male", "+79033060000");
+   
     GCMRegistrar.checkDevice(this);
     GCMRegistrar.checkManifest(this);
     
     // Достаем идентификатор регистрации
-    final String regId = GCMRegistrar.getRegistrationId(this);
+    String regId = GCMRegistrar.getRegistrationId(this);
     
     if (regId.equals("")) { // Если отсутствует, то регистрируемся
-      GCMRegistrar.register(this);
-      Toast.makeText(this, "Зарегистрировано", 10);
+    	
+    	GCMRegistrar.register(this,sender_id);
+      Log.d("regID", regId);
+   
     } else {
       Log.v("GCM", "Already registered: " + regId);
-      
-      Toast.makeText(this, "Заррегистрировано уже", 10);
+     
     }
-        
+     	
+    //BasketRushAPISession apiSession2 = new BasketRushAPISession();
+    apiSession.requestRegId(regId);
+    Log.d("ListView",apiSession.requestList().toString());
     }
 
 

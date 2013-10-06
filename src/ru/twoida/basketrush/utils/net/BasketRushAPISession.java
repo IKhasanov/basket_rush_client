@@ -25,7 +25,8 @@ import android.util.Log;
 
 public class BasketRushAPISession {
 	private static final String serverURI = "http://aistie.cloudapp.net";
-	
+	private static final JSONObject jsnAll = null;
+	String secretKey = null;
 	public String requestAccountCreation(final String login, final String gender, final String partnerLogin) {
 		final String methodURI = "/users/create";
 		final String uri = formUriString(serverURI, methodURI);
@@ -33,9 +34,10 @@ public class BasketRushAPISession {
 			JSONObject jsn = null;
 			try {
 				Log.d("Request", uri);
-				List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
-		        nameValuePairs.add(new BasicNameValuePair("id", "12345"));
-		        nameValuePairs.add(new BasicNameValuePair("stringdata", "AndDev is Cool!"));
+				List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(3);
+		        nameValuePairs.add(new BasicNameValuePair("login", login));
+		        nameValuePairs.add(new BasicNameValuePair("gender", gender));
+		        nameValuePairs.add(new BasicNameValuePair("partnerLogin",partnerLogin));
 				
 				jsn = sendPostRequest(uri.toString(), new UrlEncodedFormEntity(nameValuePairs));
 			} catch (ClientProtocolException e) {
@@ -52,9 +54,78 @@ public class BasketRushAPISession {
 				e.printStackTrace();
 			}
 			
+			try {
+				secretKey = jsn.getString("secretkey");
+				
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				
+			}
+			
+			Log.d("secret", secretKey);
 		return jsn == null ? "" : jsn.toString();
 	}
 	
+	public String requestRegId(final String regId)
+	{
+		final String methodURI = "/users/set_push_id";
+		final String uri = formUriString(serverURI,methodURI);
+		
+		JSONObject jsn = null;
+		
+		try {
+			
+			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(3);
+			nameValuePairs.add(new BasicNameValuePair("login","+79179140000"));
+		    nameValuePairs.add(new BasicNameValuePair("secret",secretKey));
+			nameValuePairs.add(new BasicNameValuePair("push_id", regId));
+	       
+	        //Log.d("LOGIN:", "+79179170000");
+	       Log.d("Password", secretKey);
+			Log.d("Request",uri);
+			try {
+				jsn = sendPostRequest(uri.toString(), new UrlEncodedFormEntity(nameValuePairs));
+			} catch (URISyntaxException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return jsn == null ? "" : jsn.toString();
+	}
+	
+	public JSONObject requestList()
+	{
+		final String methodURI = "/users/list";
+		final String uri = formUriString(serverURI,methodURI);
+		JSONObject jsn = null;
+		
+		try {
+			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+			nameValuePairs.add(new BasicNameValuePair("login","+79179140000"));
+			nameValuePairs.add(new BasicNameValuePair("secret",secretKey));
+			try {
+				jsn = sendPostRequest(uri.toString(),new UrlEncodedFormEntity(nameValuePairs));
+			} catch (URISyntaxException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return jsn;
+		
+	}
+ 
 	private JSONObject sendPostRequest(String uri, Object entity) throws URISyntaxException, ClientProtocolException, IOException, JSONException {
 			final HttpPost request = new HttpPost();
 			request.setURI(new URI(uri));
