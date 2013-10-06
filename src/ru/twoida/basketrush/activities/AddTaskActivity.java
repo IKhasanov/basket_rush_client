@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import ru.twoida.basket_rush.models.Task;
 import ru.twoida.basket_rush.models.User;
 import ru.twoida.basket_rush_client.R;
 import ru.twoida.basketrush.utils.net.BasketRushAPISession;
@@ -18,15 +19,12 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.provider.MediaStore;
-import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
@@ -49,7 +47,7 @@ public class AddTaskActivity extends BaseActivity {
 	private static final String JPEG_FILE_SUFFIX = ".jpg";
 	
 	private TaskListAdapter adapter;
-	private List<String> taskModelList = new ArrayList<String>();
+	private List<Task> taskModelList = new ArrayList<Task>();
 	
 	private Uri imageUri;
 
@@ -78,10 +76,14 @@ public class AddTaskActivity extends BaseActivity {
 					@Override
 					public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
 						System.out.println("actionId = " + actionId);
-						if (actionId == 6) { //Нажали Enter
+						if (actionId == 6) { //пїЅпїЅпїЅпїЅпїЅпїЅ Enter
 							BasketRushAPISession apiSession = new BasketRushAPISession();
 							
 							apiSession.requestAddListItem(settings.getString(User.LOGIN, ""), settings.getString(User.SECRET_KEY, ""), v.getText().toString(), null, null);
+							Task task = new Task();
+							task.setTitle(v.getText().toString());
+							adapter.add(task);
+							taskModelList.add(task);
 						}
 						return false;
 					}
@@ -115,13 +117,13 @@ public class AddTaskActivity extends BaseActivity {
 			}
 		});
 		
-		//--------------------------------------------МЕТОДЫ СПИСКА----------------------------
+		//--------------------------------------------пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ----------------------------
 		ListView lvMain = (ListView) findViewById(R.id.lvShoppingList);
 		
 		adapter = new TaskListAdapter();
 		lvMain.setAdapter(adapter);
 		
-		//---листенер клика
+		//---пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 		lvMain.setOnItemClickListener(new OnItemClickListener(){
 			 
 			@Override
@@ -133,7 +135,7 @@ public class AddTaskActivity extends BaseActivity {
 			
 		});
 		
-		//---------------листенер прокрутки
+		//---------------пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 		lvMain.setOnScrollListener(new OnScrollListener(){
 
 			@Override
@@ -150,7 +152,7 @@ public class AddTaskActivity extends BaseActivity {
 			
 		});
 		
-		//-----------------------------КОНЕЦ МЕТОДОВ СПИСКА
+		//-----------------------------пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	}
 	
 	public String getRealPathFromURI(final Uri contentUri) {
@@ -186,31 +188,30 @@ public class AddTaskActivity extends BaseActivity {
 		super.onActivityResult(requestCode, resultCode, data);
 	}
 	
-	// Тут сплошная копипаста из ListActivity. Если когда-нибудь это дело будет дальше развиваться, то перепишу по нормальному
-	public final class GetTaskListTask extends AsyncTask<Void, Void, List<String>> {
+	// пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ ListActivity. пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ-пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+	public final class GetTaskListTask extends AsyncTask<Void, Void, List<Task>> {
 
 		@Override
-		protected List<String> doInBackground(final Void... params) {
-			List<String> taskList = new ArrayList<String>();
+		protected List<Task> doInBackground(final Void... params) {
+			List<Task> taskList = new ArrayList<Task>();
 			
 			BasketRushAPISession apiSession = new BasketRushAPISession();
-			apiSession.requestList(settings.getString(User.LOGIN, ""), settings.getString(User.SECRET_KEY, ""));
+			taskList = apiSession.requestList(settings.getString(User.LOGIN, ""), settings.getString(User.SECRET_KEY, ""));
 			
-			for (int i = 0; i < 10; i++) {
-				taskList.add("111");
-			}
+//			for (int i = 0; i < 10; i++) {
+//				taskList.add("111");
+//			}
 			
 			return taskList;
 		}
 
-		@Override
-		protected void onPostExecute(final List<String> taskList) {
+		protected void onPostExecute(final List<Task> taskList) {
 			super.onPostExecute(taskList);
 
 			taskModelList = taskList;
 			adapter.clear();
 			if (taskList != null) {
-				for (final String task : taskModelList) {
+				for (final Task task : taskModelList) {
 					adapter.add(task);
 				}
 			}
@@ -220,7 +221,7 @@ public class AddTaskActivity extends BaseActivity {
 	}
 
 	
-	public class TaskListAdapter extends ArrayAdapter<String> {
+	public class TaskListAdapter extends ArrayAdapter<Task> {
 		private final LayoutInflater mInflater;
 		
 		public TaskListAdapter() {
@@ -239,9 +240,12 @@ public class AddTaskActivity extends BaseActivity {
 				
 				holder.tvTaskText = (TextView) convertView.findViewById(R.id.tvTaskText);
 				holder.btnTaskPhoto = (ImageButton) convertView.findViewById(R.id.btnTaskPhoto);
+				convertView.setTag(holder);
 			} else {
 				holder = (ViewHolder) convertView.getTag();
 			}
+			
+			holder.tvTaskText.setText(taskModelList.get(position).getTitle());
 			
 			return convertView;
 		}
