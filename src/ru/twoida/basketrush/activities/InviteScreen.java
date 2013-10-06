@@ -54,6 +54,7 @@ public class InviteScreen extends BaseActivity implements OnClickListener {
 						editor.putString(User.ID, user.getId());
 						editor.putString(User.LOGIN, user.getLogin());
 						editor.putString(User.SECRET_KEY, user.getSecretKey());
+						editor.commit();
 						
 				    	Intent intent = new Intent(this, ListActivity.class);
 				        startActivity(intent);
