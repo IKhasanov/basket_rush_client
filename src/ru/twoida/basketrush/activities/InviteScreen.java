@@ -76,8 +76,8 @@ public class InviteScreen extends BaseActivity implements OnClickListener {
 					      Log.d("regID", regId);
 					   
 					    } else {
-					      Log.v("GCM", "Already registered: " + regId);
-					     
+					    	GCMRegistrar.register(this, sender_id);
+						      Log.d("regID", regId);
 					    }
 					    
 					    apiSession.requestRegId(user.getLogin(), user.getSecretKey(), regId);
