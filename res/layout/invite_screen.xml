@@ -17,7 +17,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:background="@drawable/btn_green"
-        android:text="Указать номер"
+        android:text="Выбрать"
         android:textColor="@android:color/white" />
 
     <TextView
@@ -38,7 +38,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="104dp"
         android:gravity="center"
-        android:text="Отправьте ей приглашение\n и после подтверждения \n жена сможет отправлять Вам \n списки покупок."
+        android:text="Выберите номер телефона \n своей жены из телефонной книги"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <RelativeLayout

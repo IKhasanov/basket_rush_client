@@ -4,6 +4,7 @@ import ru.twoida.basket_rush.models.User;
 import ru.twoida.basketrush.activities.BaseActivity;
 import ru.twoida.basketrush.activities.FirstLaunchScreen;
 import android.os.Bundle;
+import android.os.Handler;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,13 +17,14 @@ import android.widget.EditText;
 
 
 public class EnterPhoneActivity extends BaseActivity {
-
+	private Handler mHandler = new Handler();
+	EditText etPhoneNumber;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_enter_phone);
-		
-		final EditText etPhoneNumber = (EditText)findViewById(R.id.etPhoneNumber);
+		etPhoneNumber = (EditText)findViewById(R.id.etPhoneNumber);
+		showInputMethod();
 		etPhoneNumber.setSelection(etPhoneNumber.getText().length());
 		etPhoneNumber.setOnKeyListener(new OnKeyListener(){
 
@@ -38,17 +40,57 @@ public class EnterPhoneActivity extends BaseActivity {
 					
 			    	Intent intent = new Intent(EnterPhoneActivity.this, FirstLaunchScreen.class);
 			        startActivity(intent);
+			        hideInputMethod();
 			          return true;
 			        }
+				
+				hideInputMethod();
 				return false;
+				
 			}
 			
 		});
+		//hideInputMethod();
+		//etPhoneNumber.requestFocus();
+		//InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+		//imm.toggleSoftInput(etPhoneNumber, InputMethodManager.);
 		
-		etPhoneNumber.requestFocus();
-		InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-		imm.showSoftInput(etPhoneNumber, InputMethodManager.SHOW_IMPLICIT);
-		
+	}
+	
+	protected void hideInputMethod() {
+	    InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+	    if (imm != null) {
+	        imm.hideSoftInputFromWindow(etPhoneNumber.getWindowToken(), 0);
+	    }
+	}
+
+	/**
+	 * показываем программную клавиатуру
+	 */
+	protected void showInputMethod() {
+	    InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+	    if (imm != null) {
+	    	imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+	    }
+	}
+
+	private Runnable mShowInputMethodTask = new Runnable() {
+	    public void run() {
+	        showInputMethod();
+	    }
+	};
+
+	@Override
+	public void onWindowFocusChanged(boolean hasFocus) {
+	    super.onWindowFocusChanged(hasFocus);
+	    if (hasFocus) {
+	        // если окно в фокусе, то ждем еще немного и показываем клавиатуру
+	        mHandler.postDelayed(mShowInputMethodTask, 0);
+	    }
+	    else 
+	    {
+	    	hideInputMethod();
+	    }
 	}
 
 	@Override
