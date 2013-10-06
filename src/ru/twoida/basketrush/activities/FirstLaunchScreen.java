@@ -12,14 +12,17 @@ import ru.twoida.basket_rush_client.R;
 
 public class FirstLaunchScreen extends BaseActivity implements OnClickListener {
 	
-	Button btnSelectYourSelf;
+	Button btnSelectMale;
+	Button btnSelectFemale;
 	
 	@Override
 	protected void onCreate (Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.first_launch_screen);
-		btnSelectYourSelf = (Button) findViewById(R.id.btnMale);
-		btnSelectYourSelf.setOnClickListener(this);
+		btnSelectMale = (Button) findViewById(R.id.btnMale);
+		btnSelectMale.setOnClickListener(this);
+		btnSelectFemale = (Button) findViewById(R.id.btnFemale);
+		btnSelectFemale.setOnClickListener(this);
 	}
 
 	@Override
