@@ -1,14 +1,20 @@
 package ru.twoida.basketrush.activities;
 
 import ru.twoida.basket_rush_client.R;
+import ru.twoida.basketrush.utils.net.BasketRushAPISession;
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class InviteScreen extends BaseActivity implements OnClickListener {
+	public final static int REQUEST_PICK_CONTACT_PARTNER = 1001;
+	
 	Button btnSelectPartner; 
 	protected void onCreate (Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
@@ -17,12 +23,45 @@ public class InviteScreen extends BaseActivity implements OnClickListener {
 		btnSelectPartner = (Button) findViewById(R.id.btnSelectPartner);
 		btnSelectPartner.setOnClickListener(this);
 	}
+	
+	@Override
+	public void onActivityResult(final int reqCode, final int resultCode, final Intent data) {
+		super.onActivityResult(reqCode, resultCode, data);
+
+		switch (reqCode) {
+			case (REQUEST_PICK_CONTACT_PARTNER): {
+				if (resultCode == Activity.RESULT_OK) {
+					final Uri contactData = data.getData();
+					final Cursor c = managedQuery(contactData, null, null, null, null);
+					if (c.moveToFirst()) {
+						final String contactId = c.getString(c.getColumnIndex(ContactsContract.Contacts._ID));
+						final String name = c.getString(c.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
+						String phoneNumber = "";
+						final Cursor phones = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = " + contactId,
+								null, null);
+						while (phones.moveToNext()) {
+							phoneNumber = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DATA));
+						}
+						phones.close();
+
+						BasketRushAPISession apiSession = new BasketRushAPISession();
+						apiSession.requestAccountCreation(settings.getString(PHONE_NUMBER, ""), settings.getString(GENDER, ""), phoneNumber);
+						
+				    	Intent intent = new Intent(this, ListActivity.class);
+				        startActivity(intent);
+					}
+				}
+			}
+		}
+	}
+	
 	@Override
 	public void onClick(View v) {
 		 switch (v.getId()) {
 		    case R.id.btnSelectPartner:
-		    	Intent intent = new Intent(this, ListActivity.class);
-		        startActivity(intent);
+				final Intent intent = new Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI);
+				startActivityForResult(intent, InviteScreen.REQUEST_PICK_CONTACT_PARTNER);
+		    	
 		      break;
 		    default:
 		      break;
