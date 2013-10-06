@@ -10,10 +10,12 @@ public class Task {
 	public static final String TITLE = "title";
 	public static final String PHOTO_NAME = "photo";
 	public static final String COUNT = "count";
+	public static final String ID = "_id";
 	
 	private String title;
 	private String count;
 	private String photo_name;
+	private String id;
 	
 	public void mapTask(JSONObject jsn) throws JSONException {
 		System.out.println(jsn);
@@ -26,6 +28,9 @@ public class Task {
 		if (jsn.has(PHOTO_NAME)) {
 		this.photo_name = jsn.getString(PHOTO_NAME);
 		System.out.println(this.photo_name);
+		}
+		if (jsn.has(ID)) {
+			this.id = jsn.getString(ID);
 		}
 	}
 	
@@ -48,4 +53,12 @@ public class Task {
 		this.photo_name = photo_name;
 	}
 
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+	
 }

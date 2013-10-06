@@ -119,7 +119,7 @@ public class ListActivity extends BaseActivity {
 		}
 		
 		@Override
-		public View getView(int position, View convertView, ViewGroup parent) {
+		public View getView(final int position, View convertView, ViewGroup parent) {
 
 			ViewHolder holder = null;
 			
@@ -136,6 +136,16 @@ public class ListActivity extends BaseActivity {
 			
 			holder.tvTaskText.setText(taskModelList.get(position).getTitle());
 			holder.btnTaskPhoto.setBackgroundResource(color_Stubs[position % 5]);
+			holder.btnTaskPhoto.setOnClickListener(new View.OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					BasketRushAPISession apiSession = new BasketRushAPISession();
+					Task task = taskModelList.get(position);
+					apiSession.requestDeleteListItem(settings.getString(User.LOGIN, ""), settings.getString(User.SECRET_KEY, ""), task.getId());
+					taskModelList.remove(position);
+				}
+			});
 			
 			return convertView;
 		}
