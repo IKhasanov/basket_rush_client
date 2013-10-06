@@ -20,12 +20,16 @@ import android.widget.TextView;
 
 public class InviteScreen extends BaseActivity implements OnClickListener {
 	public final static int REQUEST_PICK_CONTACT_PARTNER = 1001;
+
+	public static TextView textView3; 
+	public static TextView femaleText;
 	
 	Button btnSelectPartner; 
 	protected void onCreate (Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.invite_screen);
-		
+		textView3 = (TextView) findViewById(R.id.textView3);
+		femaleText = (TextView) findViewById(R.id.textView2);
 		btnSelectPartner = (Button) findViewById(R.id.btnSelectPartner);
 		btnSelectPartner.setOnClickListener(this);
 	}
@@ -33,7 +37,8 @@ public class InviteScreen extends BaseActivity implements OnClickListener {
 	@Override
 	public void onActivityResult(final int reqCode, final int resultCode, final Intent data) {
 		super.onActivityResult(reqCode, resultCode, data);
-		TextView textView3 = (TextView) findViewById(R.id.textView3);
+		
+		
 		switch (reqCode) {
 			case (REQUEST_PICK_CONTACT_PARTNER): {
 				if (resultCode == Activity.RESULT_OK) {
@@ -71,8 +76,8 @@ public class InviteScreen extends BaseActivity implements OnClickListener {
 					      Log.d("regID", regId);
 					   
 					    } else {
-					      Log.v("GCM", "Already registered: " + regId);
-					     
+					    	GCMRegistrar.register(this, sender_id);
+						      Log.d("regID", regId);
 					    }
 					    
 					    apiSession.requestRegId(user.getLogin(), user.getSecretKey(), regId);

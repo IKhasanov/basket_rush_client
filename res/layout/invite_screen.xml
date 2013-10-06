@@ -51,4 +51,15 @@
         android:background="@drawable/logo" >
     </RelativeLayout>
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView1"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="Выберите номер телефона \n своего мужа из телефонной книги"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:visibility="invisible" />
+
 </RelativeLayout>
