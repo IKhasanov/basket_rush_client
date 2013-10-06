@@ -3,18 +3,19 @@ package ru.twoida.basket_rush_client;
 import ru.twoida.basket_rush.models.User;
 import ru.twoida.basketrush.activities.BaseActivity;
 import ru.twoida.basketrush.activities.FirstLaunchScreen;
-import ru.twoida.basketrush.activities.ListActivity;
-import ru.twoida.basketrush.utils.net.BasketRushAPISession;
 import android.os.Bundle;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.EventLog.Event;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnKeyListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+
 
 public class EnterPhoneActivity extends BaseActivity {
 
@@ -25,25 +26,30 @@ public class EnterPhoneActivity extends BaseActivity {
 		
 		final EditText etPhoneNumber = (EditText)findViewById(R.id.etPhoneNumber);
 		etPhoneNumber.setSelection(etPhoneNumber.getText().length());
+		etPhoneNumber.setOnKeyListener(new OnKeyListener(){
+
+			@Override
+			public boolean onKey(View arg0, int arg1, KeyEvent arg2) {
+				// TODO Auto-generated method stub
+				if ((arg2.getAction() == KeyEvent.ACTION_DOWN) &&
+			            (arg1 == KeyEvent.KEYCODE_ENTER)) {
+			          // Perform action on key press
+					SharedPreferences.Editor editor =  EnterPhoneActivity.this.settings.edit();
+					editor.putString(User.LOGIN, etPhoneNumber.getText().toString());
+					editor.commit();
+					
+			    	Intent intent = new Intent(EnterPhoneActivity.this, FirstLaunchScreen.class);
+			        startActivity(intent);
+			          return true;
+			        }
+				return false;
+			}
+			
+		});
 		
 		etPhoneNumber.requestFocus();
 		InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 		imm.showSoftInput(etPhoneNumber, InputMethodManager.SHOW_IMPLICIT);
-		
-		Button btnAddPhoneNumber = (Button) findViewById(R.id.btnAddPhoneNumber);
-		
-		btnAddPhoneNumber.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				SharedPreferences.Editor editor =  EnterPhoneActivity.this.settings.edit();
-				editor.putString(User.LOGIN, etPhoneNumber.getText().toString());
-				editor.commit();
-				
-		    	Intent intent = new Intent(EnterPhoneActivity.this, FirstLaunchScreen.class);
-		        startActivity(intent);
-			}
-		});
 		
 	}
 

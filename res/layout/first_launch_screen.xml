@@ -40,16 +40,6 @@
         android:text="А муж не забудет после работы \n купить всё это."
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="52dp"
-        android:background="@drawable/logo" >
-    </RelativeLayout>
-
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="wrap_content"
@@ -95,5 +85,16 @@
             android:textColor="@android:color/white"
             android:textSize="18sp" />
     </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="59dp"
+        android:background="@drawable/logo"
+        android:minHeight="30dp" >
+    </RelativeLayout>
 
 </RelativeLayout>

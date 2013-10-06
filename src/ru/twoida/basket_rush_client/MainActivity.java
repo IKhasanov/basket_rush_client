@@ -15,7 +15,13 @@ import ru.twoida.basketrush.utils.net.BasketRushAPISession;
 import com.google.android.gcm.GCMRegistrar;
 
 public class MainActivity extends Activity implements OnClickListener {
-	
+
+	@Override
+	public void onClick(View arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+	/*
 	Button btnFrstScr;
 	String sender_id = "127652006695";
     @Override
@@ -44,8 +50,8 @@ public class MainActivity extends Activity implements OnClickListener {
     }
      	
     //BasketRushAPISession apiSession2 = new BasketRushAPISession();
-    apiSession.requestRegId(regId);
-    Log.d("ListView","ID= "+apiSession.requestAddListItem("NEW PRODUCT","1200", "no_photo"));
+    //apiSession.requestRegId(regId);
+    //Log.d("ListView","ID= "+apiSession.requestAddListItem("NEW PRODUCT","1200", "no_photo"));
     }
 
 
@@ -68,6 +74,6 @@ public class MainActivity extends Activity implements OnClickListener {
 		    default:
 		      break;
 		    }
-	}
+	}*/
     
 }
