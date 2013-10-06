@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import ru.twoida.basket_rush.models.User;
 import ru.twoida.basket_rush_client.EnterPhoneActivity;
 import ru.twoida.basket_rush_client.R;
 
@@ -26,14 +27,14 @@ public class FirstLaunchScreen extends BaseActivity implements OnClickListener {
 		SharedPreferences.Editor editor =  FirstLaunchScreen.this.settings.edit();
 		 switch (v.getId()) {
 		    case R.id.btnMale:
-				editor.putString(GENDER, "male");
+				editor.putString(User.GENDER, "male");
 				editor.commit();
 		    	
 		    	Intent intentMale = new Intent(this, InviteScreen.class);
 		        startActivity(intentMale);
 		      break;
 		    case R.id.btnFemale:
-				editor.putString(GENDER, "female");
+				editor.putString(User.GENDER, "female");
 				editor.commit();
 
 		    	Intent intentFemale = new Intent(this, InviteScreen.class);

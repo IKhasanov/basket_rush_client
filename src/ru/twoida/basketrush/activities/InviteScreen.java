@@ -1,9 +1,11 @@
 package ru.twoida.basketrush.activities;
 
+import ru.twoida.basket_rush.models.User;
 import ru.twoida.basket_rush_client.R;
 import ru.twoida.basketrush.utils.net.BasketRushAPISession;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences.Editor;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -45,7 +47,13 @@ public class InviteScreen extends BaseActivity implements OnClickListener {
 						phones.close();
 
 						BasketRushAPISession apiSession = new BasketRushAPISession();
-						apiSession.requestAccountCreation(settings.getString(PHONE_NUMBER, ""), settings.getString(GENDER, ""), phoneNumber);
+						User user = apiSession.requestAccountCreation(settings.getString(User.LOGIN, ""), settings.getString(User.GENDER, ""), phoneNumber);
+						
+						Editor editor = settings.edit();
+						editor.putString(User.GENDER, user.getGender());
+						editor.putString(User.ID, user.getId());
+						editor.putString(User.LOGIN, user.getLogin());
+						editor.putString(User.SECRET_KEY, user.getSecretKey());
 						
 				    	Intent intent = new Intent(this, ListActivity.class);
 				        startActivity(intent);

@@ -9,10 +9,6 @@ public abstract class BaseActivity extends Activity {
 	
 	protected final static String PREFERENCES_NAME = "BasketRush";
 	
-	protected final static String PHONE_NUMBER = "phone_number";
-	protected final static String GENDER = "gender";
-	protected final static String PARTNER_ID = "partner_id";
-	
 	protected SharedPreferences settings = null;
 	
 	@Override

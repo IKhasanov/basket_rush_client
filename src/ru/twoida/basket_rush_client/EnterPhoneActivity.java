@@ -1,5 +1,6 @@
 package ru.twoida.basket_rush_client;
 
+import ru.twoida.basket_rush.models.User;
 import ru.twoida.basketrush.activities.BaseActivity;
 import ru.twoida.basketrush.activities.FirstLaunchScreen;
 import ru.twoida.basketrush.activities.ListActivity;
@@ -36,7 +37,7 @@ public class EnterPhoneActivity extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				SharedPreferences.Editor editor =  EnterPhoneActivity.this.settings.edit();
-				editor.putString(PHONE_NUMBER, etPhoneNumber.getText().toString());
+				editor.putString(User.LOGIN, etPhoneNumber.getText().toString());
 				editor.commit();
 				
 		    	Intent intent = new Intent(EnterPhoneActivity.this, FirstLaunchScreen.class);
