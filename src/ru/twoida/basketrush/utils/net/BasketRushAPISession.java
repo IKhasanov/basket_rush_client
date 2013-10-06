@@ -21,15 +21,16 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import ru.twoida.basket_rush.models.User;
 import android.util.Log;
 
 public class BasketRushAPISession {
 	
 	private static final String serverURI = "http://aistie.cloudapp.net";
-	
+	private static final JSONObject jsnAll = null;
 	String secretKey = null;
 	
-	public String requestAccountCreation(final String login, final String gender, final String partnerLogin) {
+	public User requestAccountCreation(final String login, final String gender, final String partnerLogin) {
 		final String methodURI = "/users/create";
 		final String uri = formUriString(serverURI, methodURI);
 
@@ -66,7 +67,14 @@ public class BasketRushAPISession {
 			}
 			
 			Log.d("secret", secretKey);
-		return jsn == null ? "" : jsn.toString();
+		User user = new User();
+		try {
+			user.mapUser(jsn);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return user;
 	}
 	
 	public String requestRegId(final String regId)

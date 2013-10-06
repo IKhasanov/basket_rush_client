@@ -20,8 +20,10 @@
         android:phoneNumber="true"/>
     
     <Button android:id="@+id/btnAddPhoneNumber"
+        android:text="Войти"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         />"
 
 </RelativeLayout>
