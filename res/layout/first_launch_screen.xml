@@ -24,7 +24,7 @@
         android:layout_above="@+id/textView1"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
-        android:gravity="center"  
+        android:gravity="center"
         android:text="Инструмент для составления \n списка покупок."
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -41,6 +41,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <RelativeLayout
+        android:id="@+id/relativeLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -49,35 +50,50 @@
         android:background="@drawable/logo" >
     </RelativeLayout>
 
-    <Button
-        android:id="@+id/btnMale"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="22dp"
+        android:layout_marginBottom="16dp"
         android:layout_marginRight="16dp"
-        android:background="@drawable/btn_blue"
-        android:minHeight="46dp"
-        android:minWidth="136dp"
-        android:paddingLeft="0dp"
-        android:text="Я муж"
-        android:textColor="@android:color/white"
-        android:textSize="18sp" />
+        android:orientation="vertical" >
 
-    <Button
-        android:id="@+id/btnFemale"
+        <Button
+            android:id="@+id/btnMale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_blue"
+            android:minHeight="46dp"
+            android:minWidth="136dp"
+            android:paddingLeft="0dp"
+            android:text="Я муж"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/btnMale"
-        android:layout_alignBottom="@+id/btnMale"
         android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/linearLayout2"
+        android:layout_marginBottom="16dp"
         android:layout_marginLeft="16dp"
-        android:background="@drawable/btn_red"
-        android:minHeight="46dp"
-        android:minWidth="136dp"
-        android:text="Я жена"
-        android:textColor="@android:color/white"
-        android:textSize="18sp" />
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/btnFemale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_red"
+            android:minHeight="46dp"
+            android:minWidth="136dp"
+            android:text="Я жена"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+    </LinearLayout>
 
 </RelativeLayout>
