@@ -4,24 +4,77 @@
     android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/Textsa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="67dp"
-        android:text="Я: (первый экран)"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <Button
-        android:id="@+id/btnSelectYourSelf"
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="Я муж" />
+        android:gravity="center"
+        android:text="Жена запишет всё, чего\n не хватает в холодильнике."
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:text="Инструмент для составления \n списка покупок."
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:minHeight="46"
+        android:text="А муж не забудет после работы \n купить всё это."
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="52dp"
+        android:background="@drawable/logo" >
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btnMale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="22dp"
+        android:layout_marginRight="16"
+        android:background="@drawable/blue_button"
+        android:minHeight="46"
+        android:minWidth="136"
+        android:paddingLeft="0dp"
+        android:text="Я муж"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/btnFemale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnMale"
+        android:layout_alignBottom="@+id/btnMale"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="16"
+        android:background="@drawable/red_button"
+        android:minHeight="46"
+        android:minWidth="136"
+        android:text="Я жена" />
 
 </RelativeLayout>

@@ -16,7 +16,7 @@ public class FirstLaunchScreen extends BaseActivity implements OnClickListener {
 	protected void onCreate (Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.first_launch_screen);
-		btnSelectYourSelf = (Button) findViewById(R.id.btnSelectYourSelf);
+		btnSelectYourSelf = (Button) findViewById(R.id.btnMale);
 		btnSelectYourSelf.setOnClickListener(this);
 	}
 
@@ -24,7 +24,7 @@ public class FirstLaunchScreen extends BaseActivity implements OnClickListener {
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		 switch (v.getId()) {
-		    case R.id.btnSelectYourSelf:
+		    case R.id.btnMale:
 		    	Intent intent = new Intent(this, InviteScreen.class);
 		        startActivity(intent);
 		      break;

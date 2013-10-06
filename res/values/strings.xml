@@ -6,4 +6,5 @@
     <string name="hello_world">Hello world!</string>
     <string name="go_to_shop">Жена, я поехал в магазин</string>
     <string name="add_task">+ Добавить</string>
+    <string name="text2">для составления покупок</string>
 </resources>
