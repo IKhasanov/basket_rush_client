@@ -1,3 +1,4 @@
+
 package ru.twoida.basketrush.activities;
 
 import java.util.ArrayList;
@@ -71,6 +72,8 @@ public class ListActivity extends BaseActivity {
 		});
 		
 		//-----------------------------йнмеж лернднб яохяйю
+		
+		
 	}
 	
 	public final class GetTaskListTask extends AsyncTask<Void, Void, List<String>> {

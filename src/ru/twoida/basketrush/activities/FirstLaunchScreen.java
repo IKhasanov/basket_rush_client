@@ -9,6 +9,7 @@ import android.widget.Button;
 import ru.twoida.basket_rush.models.User;
 import ru.twoida.basket_rush_client.EnterPhoneActivity;
 import ru.twoida.basket_rush_client.R;
+import ru.twoida.basketrush.activities.InviteScreen;
 
 public class FirstLaunchScreen extends BaseActivity implements OnClickListener {
 	
@@ -31,6 +32,7 @@ public class FirstLaunchScreen extends BaseActivity implements OnClickListener {
 		 switch (v.getId()) {
 		    case R.id.btnMale:
 				editor.putString(User.GENDER, "male");
+
 				editor.commit();
 		    	
 		    	Intent intentMale = new Intent(this, InviteScreen.class);
@@ -38,6 +40,7 @@ public class FirstLaunchScreen extends BaseActivity implements OnClickListener {
 		      break;
 		    case R.id.btnFemale:
 				editor.putString(User.GENDER, "female");
+				
 				editor.commit();
 
 		    	Intent intentFemale = new Intent(this, InviteScreen.class);
