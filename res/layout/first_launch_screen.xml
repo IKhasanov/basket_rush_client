@@ -40,52 +40,6 @@
         android:text="А муж не забудет после работы \n купить всё это."
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="16dp"
-        android:layout_marginRight="16dp"
-        android:orientation="vertical" >
-
-        <Button
-            android:id="@+id/btnMale"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/btn_blue"
-            android:minHeight="46dp"
-            android:minWidth="136dp"
-            android:paddingLeft="0dp"
-            android:text="Я муж"
-            android:textColor="@android:color/white"
-            android:textSize="18sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignTop="@+id/linearLayout2"
-        android:layout_marginBottom="16dp"
-        android:layout_marginLeft="16dp"
-        android:gravity="center"
-        android:orientation="vertical" >
-
-        <Button
-            android:id="@+id/btnFemale"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/btn_red"
-            android:minHeight="46dp"
-            android:minWidth="136dp"
-            android:text="Я жена"
-            android:textColor="@android:color/white"
-            android:textSize="18sp" />
-    </LinearLayout>
-
     <RelativeLayout
         android:id="@+id/relativeLayout2"
         android:layout_width="wrap_content"
@@ -96,5 +50,37 @@
         android:background="@drawable/logo"
         android:minHeight="30dp" >
     </RelativeLayout>
+
+    <Button
+        android:id="@+id/btnFemale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/btn_red"
+        android:gravity="center"
+        android:minHeight="46dp"
+        android:minWidth="136dp"
+        android:text="Я жена"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/btnMale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnFemale"
+        android:layout_alignBottom="@+id/btnFemale"
+        android:layout_alignLeft="@layout/first_launch_screen"
+        android:layout_alignRight="@+id/textView2"
+        android:background="@drawable/btn_blue"
+        android:gravity="center"
+        android:minHeight="46dp"
+        android:minWidth="136dp"
+        android:paddingLeft="0dp"
+        android:text="Я муж"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
 
 </RelativeLayout>
