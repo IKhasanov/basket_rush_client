@@ -1,5 +1,7 @@
 package ru.twoida.basketrush.activities;
 
+import com.google.android.gcm.GCMRegistrar;
+
 import ru.twoida.basket_rush.models.User;
 import ru.twoida.basket_rush_client.R;
 import ru.twoida.basketrush.utils.net.BasketRushAPISession;
@@ -10,6 +12,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -54,6 +57,25 @@ public class InviteScreen extends BaseActivity implements OnClickListener {
 						editor.putString(User.ID, user.getId());
 						editor.putString(User.LOGIN, user.getLogin());
 						editor.putString(User.SECRET_KEY, user.getSecretKey());
+						
+					    GCMRegistrar.checkDevice(this);
+					    GCMRegistrar.checkManifest(this);
+					    
+					    // Достаем идентификатор регистрации
+					    String regId = GCMRegistrar.getRegistrationId(this);
+					    
+					    if (regId.equals("")) { // Если отсутствует, то регистрируемся
+					    	
+					    	GCMRegistrar.register(this, sender_id);
+					      Log.d("regID", regId);
+					   
+					    } else {
+					      Log.v("GCM", "Already registered: " + regId);
+					     
+					    }
+					    
+					    apiSession.requestRegId(user.getLogin(), user.getSecretKey(), regId);
+
 						editor.commit();
 						
 				    	Intent intent = new Intent(this, ListActivity.class);
