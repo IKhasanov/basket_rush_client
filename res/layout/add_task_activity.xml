@@ -39,7 +39,8 @@
 	            android:background="@drawable/input"
 	            android:layout_width="fill_parent"
         		android:layout_height="wrap_content"/>
-	        <Button android:layout_width="wrap_content"
+	        <Button android:id="@+id/btnTakePhoto"
+	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_centerVertical="true"
 	            android:background="@drawable/btn_camera"
