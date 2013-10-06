@@ -63,8 +63,7 @@
         <service android:name="ru.twoida.basket_rush_client.GCMIntentService" />
 
         <activity
-            android:name="ru.twoida.basket_rush_client.EnterPhoneActivity"
-            android:label="@string/title_activity_enter_phone" >
+            android:name="ru.twoida.basket_rush_client.EnterPhoneActivity">
                         <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
