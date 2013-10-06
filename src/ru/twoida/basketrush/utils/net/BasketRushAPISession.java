@@ -39,7 +39,7 @@ public class BasketRushAPISession {
 				List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(3);
 		        nameValuePairs.add(new BasicNameValuePair("login", login));
 		        nameValuePairs.add(new BasicNameValuePair("gender", gender));
-		        nameValuePairs.add(new BasicNameValuePair("partnerLogin",partnerLogin));
+		        nameValuePairs.add(new BasicNameValuePair("partner_login",partnerLogin));
 				
 				jsn = sendPostRequest(uri.toString(), new UrlEncodedFormEntity(nameValuePairs));
 			} catch (ClientProtocolException e) {
@@ -80,7 +80,6 @@ public class BasketRushAPISession {
 		    nameValuePairs.add(new BasicNameValuePair("secret",secretKey));
 			nameValuePairs.add(new BasicNameValuePair("push_id", regId));
 	       
-	        //Log.d("LOGIN:", "+79179170000");
 	       Log.d("Password", secretKey);
 			Log.d("Request",uri);
 			try {
