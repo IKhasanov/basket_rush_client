@@ -24,7 +24,7 @@
         android:layout_above="@+id/textView1"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
-        android:gravity="center"
+        android:gravity="center"  
         android:text="Инструмент для составления \n списка покупок."
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -36,7 +36,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:gravity="center"
-        android:minHeight="46"
+        android:minHeight="46dp"
         android:text="А муж не забудет после работы \n купить всё это."
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -56,13 +56,14 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="22dp"
-        android:layout_marginRight="16"
+        android:layout_marginRight="16dp"
         android:background="@drawable/blue_button"
-        android:minHeight="46"
-        android:minWidth="136"
+        android:minHeight="46dp"
+        android:minWidth="136dp"
         android:paddingLeft="0dp"
         android:text="Я муж"
-        android:textSize="16sp" />
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/btnFemale"
@@ -71,10 +72,12 @@
         android:layout_alignBaseline="@+id/btnMale"
         android:layout_alignBottom="@+id/btnMale"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="16"
+        android:layout_marginLeft="16dp"
         android:background="@drawable/red_button"
-        android:minHeight="46"
-        android:minWidth="136"
-        android:text="Я жена" />
+        android:minHeight="46dp"
+        android:minWidth="136dp"
+        android:text="Я жена"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
 
 </RelativeLayout>

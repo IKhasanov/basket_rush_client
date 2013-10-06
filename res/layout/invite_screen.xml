@@ -3,24 +3,25 @@
     android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     android:orientation="vertical" >
 
     <Button
         android:id="@+id/btnSelectPartner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_marginBottom="35dp"
         android:text="Выбор жены" />
 
-    <TextView
-        android:id="@+id/Textsa"
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="89dp"
-        android:text="Пригласительный экран"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:layout_marginTop="55dp"
+        android:background="@drawable/logo" >
+    </RelativeLayout>
 
 </RelativeLayout>
