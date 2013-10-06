@@ -163,8 +163,12 @@ public class BasketRushAPISession {
 			nameValuePairs.add(new BasicNameValuePair("login",login));
 			nameValuePairs.add(new BasicNameValuePair("secret",secretKey));
 			nameValuePairs.add(new BasicNameValuePair("data[title]",title));
-			nameValuePairs.add(new BasicNameValuePair("data[count]",count));
-			nameValuePairs.add(new BasicNameValuePair("data[photo]",photo));
+			if (count != null) {
+				nameValuePairs.add(new BasicNameValuePair("data[count]",count));
+			}
+			if (photo != null) {
+				nameValuePairs.add(new BasicNameValuePair("data[photo]",photo));
+			}
 			try {
 				jsn = sendPostRequest(uri.toString(),new UrlEncodedFormEntity(nameValuePairs));
 			} catch (URISyntaxException e) {

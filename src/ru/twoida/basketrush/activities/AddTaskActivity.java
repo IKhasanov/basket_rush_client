@@ -3,10 +3,13 @@ package ru.twoida.basketrush.activities;
 import java.util.ArrayList;
 import java.util.List;
 
+import ru.twoida.basket_rush.models.User;
 import ru.twoida.basket_rush_client.R;
+import ru.twoida.basketrush.utils.net.BasketRushAPISession;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,6 +52,19 @@ public class AddTaskActivity extends BaseActivity {
 					InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 					imm.showSoftInput(etAddTask, InputMethodManager.SHOW_IMPLICIT);
 				}
+				etAddTask.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+					
+					@Override
+					public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+						System.out.println("actionId = " + actionId);
+						if (actionId == 6) { //Нажали Enter
+							BasketRushAPISession apiSession = new BasketRushAPISession();
+							
+							apiSession.requestAddListItem(settings.getString(User.LOGIN, ""), settings.getString(User.SECRET_KEY, ""), v.getText(), null, null);
+						}
+						return false;
+					}
+				});
 			}
 		});
 		
