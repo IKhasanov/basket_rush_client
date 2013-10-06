@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class InviteScreen extends BaseActivity implements OnClickListener {
 	public final static int REQUEST_PICK_CONTACT_PARTNER = 1001;
@@ -32,7 +33,7 @@ public class InviteScreen extends BaseActivity implements OnClickListener {
 	@Override
 	public void onActivityResult(final int reqCode, final int resultCode, final Intent data) {
 		super.onActivityResult(reqCode, resultCode, data);
-
+		TextView textView3 = (TextView) findViewById(R.id.textView3);
 		switch (reqCode) {
 			case (REQUEST_PICK_CONTACT_PARTNER): {
 				if (resultCode == Activity.RESULT_OK) {
@@ -48,7 +49,7 @@ public class InviteScreen extends BaseActivity implements OnClickListener {
 							phoneNumber = phones.getString(phones.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DATA));
 						}
 						phones.close();
-
+						textView3.setText(phoneNumber);
 						BasketRushAPISession apiSession = new BasketRushAPISession();
 						User user = apiSession.requestAccountCreation(settings.getString(User.LOGIN, ""), settings.getString(User.GENDER, ""), phoneNumber);
 						

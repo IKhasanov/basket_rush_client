@@ -19,28 +19,31 @@
         android:background="@drawable/input"
         android:ems="10"
         android:phoneNumber="true"
-        android:text="+7" />
+        android:text="+7" >
+
+        <requestFocus />
+    </EditText>
 
     <RelativeLayout
-        android:id="@+id/relativeLayout1"
+        android:id="@+id/relativeLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="49dp"
+        android:layout_marginTop="48dp"
         android:background="@drawable/logo"
-        android:minHeight="29dp" >
-
+        android:minHeight="25dp" >
     </RelativeLayout>
 
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/relativeLayout1"
+        android:layout_below="@+id/relativeLayout2"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="21dp"
         android:gravity="center"
-        android:text="Поздравляем с установкой!\n Для регистрации введите\n свой номер телефона."/>
+        android:text="Поздравляем с установкой!\n Для регистрации введите\n свой номер телефона."
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>

@@ -4,12 +4,14 @@
     android:layout_height="fill_parent"
     android:background="@drawable/background">
 	
-	<RelativeLayout android:layout_alignParentBottom="true"
-	    android:background="@drawable/logo"
+	<RelativeLayout
 	    android:layout_width="wrap_content"
-    	android:layout_height="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentBottom="true"
 	    android:layout_centerHorizontal="true"
-	    android:layout_marginBottom="20dp">
+	    android:layout_marginBottom="20dp"
+	    android:background="@drawable/bottom_logo" >
+
 	</RelativeLayout>
 
     <Button android:id="@+id/btnGoToShop"

@@ -40,17 +40,6 @@
         android:text="А муж не забудет после работы \n купить всё это."
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="59dp"
-        android:background="@drawable/logo"
-        android:minHeight="30dp" >
-    </RelativeLayout>
-
     <Button
         android:id="@+id/btnFemale"
         android:layout_width="wrap_content"
@@ -82,5 +71,16 @@
         android:text="Я муж"
         android:textColor="@android:color/white"
         android:textSize="18sp" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="64dp"
+        android:background="@drawable/logo"
+        android:minHeight="25dp" >
+    </RelativeLayout>
 
 </RelativeLayout>
