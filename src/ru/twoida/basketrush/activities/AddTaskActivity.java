@@ -60,7 +60,7 @@ public class AddTaskActivity extends BaseActivity {
 						if (actionId == 6) { //Нажали Enter
 							BasketRushAPISession apiSession = new BasketRushAPISession();
 							
-							apiSession.requestAddListItem(settings.getString(User.LOGIN, ""), settings.getString(User.SECRET_KEY, ""), v.getText(), null, null);
+							apiSession.requestAddListItem(settings.getString(User.LOGIN, ""), settings.getString(User.SECRET_KEY, ""), v.getText().toString(), null, null);
 						}
 						return false;
 					}
