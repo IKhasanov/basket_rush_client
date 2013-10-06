@@ -3,9 +3,12 @@ package ru.twoida.basketrush.activities;
 import java.util.ArrayList;
 import java.util.List;
 
+import ru.twoida.basket_rush.models.User;
 import ru.twoida.basket_rush_client.R;
+import ru.twoida.basketrush.utils.net.BasketRushAPISession;
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -30,8 +33,6 @@ public class ListActivity extends BaseActivity {
 		setContentView(R.layout.list_screen);
 		
 		new GetTaskListTask().execute();
-		
-		//String[] names = new String[] {"Кефир как на картинке", "Помидоры местные", "Сухарики Ядрен батон"};
 		
 		//--------------------------------------------МЕТОДЫ СПИСКА----------------------------
 		ListView lvMain = (ListView) findViewById(R.id.lvShoppingList);
@@ -77,6 +78,8 @@ public class ListActivity extends BaseActivity {
 		@Override
 		protected List<String> doInBackground(final Void... params) {
 			List<String> taskList = new ArrayList<String>();
+			BasketRushAPISession apiSession = new BasketRushAPISession();
+			apiSession.requestList(settings.getString(User.LOGIN, ""), settings.getString(User.SECRET_KEY, ""));
 			
 			for (int i = 0; i < 10; i++) {
 				taskList.add("111");
