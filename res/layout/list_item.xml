@@ -16,13 +16,12 @@
         android:text=""
     />
     
-    <ImageButton android:id="@+id/btnTaskPhoto"
+    <RelativeLayout android:id="@+id/btnTaskPhoto"
 		android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="8dp"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:src="@drawable/bar"
     />
 
 </RelativeLayout>

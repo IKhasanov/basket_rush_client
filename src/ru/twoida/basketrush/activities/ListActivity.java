@@ -23,9 +23,12 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class ListActivity extends BaseActivity {
+	
+	public final static int[] color_Stubs = {R.drawable.stub_blue, R.drawable.stub_green, R.drawable.stub_orange, R.drawable.stub_red, R.drawable.stub_violet};
 	
 	private TaskListAdapter adapter;
 	private List<Task> taskModelList = new ArrayList<Task>();
@@ -125,13 +128,14 @@ public class ListActivity extends BaseActivity {
 				convertView = mInflater.inflate(R.layout.list_item, null);
 				
 				holder.tvTaskText = (TextView) convertView.findViewById(R.id.tvTaskText);
-				holder.btnTaskPhoto = (ImageButton) convertView.findViewById(R.id.btnTaskPhoto);
+				holder.btnTaskPhoto = (RelativeLayout) convertView.findViewById(R.id.btnTaskPhoto);
 				convertView.setTag(holder);
 			} else {
 				holder = (ViewHolder) convertView.getTag();
 			}
 			
 			holder.tvTaskText.setText(taskModelList.get(position).getTitle());
+			holder.btnTaskPhoto.setBackgroundResource(color_Stubs[position % 5]);
 			
 			return convertView;
 		}
@@ -140,6 +144,6 @@ public class ListActivity extends BaseActivity {
 	
 	private static class ViewHolder {
 		TextView tvTaskText;
-		ImageButton btnTaskPhoto;
+		RelativeLayout btnTaskPhoto;
 	}
 }

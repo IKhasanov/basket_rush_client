@@ -43,6 +43,8 @@ public class AddTaskActivity extends BaseActivity {
 	
 	public final static int REQUEST_TAKE_PHOTO = 1011;
 	
+	public final static int[] color_Stubs = {R.drawable.stub_blue, R.drawable.stub_green, R.drawable.stub_orange, R.drawable.stub_red, R.drawable.stub_violet};
+	
 	private static final String JPEG_FILE_PREFIX = "IMG_";
 	private static final String JPEG_FILE_SUFFIX = ".jpg";
 	
@@ -84,6 +86,7 @@ public class AddTaskActivity extends BaseActivity {
 							task.setTitle(v.getText().toString());
 							adapter.add(task);
 							taskModelList.add(task);
+							v.setText("");
 						}
 						return false;
 					}
@@ -238,13 +241,14 @@ public class AddTaskActivity extends BaseActivity {
 				convertView = mInflater.inflate(R.layout.list_item, null);
 				
 				holder.tvTaskText = (TextView) convertView.findViewById(R.id.tvTaskText);
-				holder.btnTaskPhoto = (ImageButton) convertView.findViewById(R.id.btnTaskPhoto);
+				holder.btnTaskPhoto = (RelativeLayout) convertView.findViewById(R.id.btnTaskPhoto);
 				convertView.setTag(holder);
 			} else {
 				holder = (ViewHolder) convertView.getTag();
 			}
 			
 			holder.tvTaskText.setText(taskModelList.get(position).getTitle());
+			holder.btnTaskPhoto.setBackgroundResource(color_Stubs[position % 5]);
 			
 			return convertView;
 		}
@@ -253,7 +257,7 @@ public class AddTaskActivity extends BaseActivity {
 	
 	private static class ViewHolder {
 		TextView tvTaskText;
-		ImageButton btnTaskPhoto;
+		RelativeLayout btnTaskPhoto;
 	}
 
 }
