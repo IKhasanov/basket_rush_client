@@ -24,9 +24,11 @@ import org.json.JSONObject;
 import android.util.Log;
 
 public class BasketRushAPISession {
+	
 	private static final String serverURI = "http://aistie.cloudapp.net";
-	private static final JSONObject jsnAll = null;
+	
 	String secretKey = null;
+	
 	public String requestAccountCreation(final String login, final String gender, final String partnerLogin) {
 		final String methodURI = "/users/create";
 		final String uri = formUriString(serverURI, methodURI);
@@ -123,6 +125,63 @@ public class BasketRushAPISession {
 		}
 		
 		return jsn;
+		
+	}
+	
+	public void requestDeleteListItem(String itemId)
+	{
+		final String methodURI = "/users/removeitem";
+		final String uri = formUriString(serverURI,methodURI);
+		
+		JSONObject jsn = null;
+		
+		try {
+			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(3);
+			nameValuePairs.add(new BasicNameValuePair("login","+79179140000"));
+			nameValuePairs.add(new BasicNameValuePair("secret",secretKey));
+			nameValuePairs.add(new BasicNameValuePair("item_id",itemId));
+			try {
+				jsn = sendPostRequest(uri.toString(),new UrlEncodedFormEntity(nameValuePairs));
+			} catch (URISyntaxException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		
+		}
+	}
+	
+	public String requestAddListItem(String title, String count, String photo)
+	{
+		final String methodURI = "/users/additem";
+		final String uri = formUriString(serverURI,methodURI);
+		
+		JSONObject jsn = null;
+		
+		try {
+			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(5);
+			nameValuePairs.add(new BasicNameValuePair("login","+79179140000"));
+			nameValuePairs.add(new BasicNameValuePair("secret",secretKey));
+			nameValuePairs.add(new BasicNameValuePair("data[title]",title));
+			nameValuePairs.add(new BasicNameValuePair("data[count]",count));
+			nameValuePairs.add(new BasicNameValuePair("data[photo]",photo));
+			try {
+				jsn = sendPostRequest(uri.toString(),new UrlEncodedFormEntity(nameValuePairs));
+			} catch (URISyntaxException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return  jsn == null ? "" : jsn.toString();
 		
 	}
  

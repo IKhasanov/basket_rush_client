@@ -45,7 +45,7 @@ public class MainActivity extends Activity implements OnClickListener {
      	
     //BasketRushAPISession apiSession2 = new BasketRushAPISession();
     apiSession.requestRegId(regId);
-    Log.d("ListView",apiSession.requestList().toString());
+    Log.d("ListView","ID= "+apiSession.requestAddListItem("NEW PRODUCT","1200", "no_photo"));
     }
 
 
