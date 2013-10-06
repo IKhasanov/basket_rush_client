@@ -4,19 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ru.twoida.basket_rush_client.R;
-import ru.twoida.basketrush.activities.ListActivity.GetTaskListTask;
-import ru.twoida.basketrush.activities.ListActivity.TaskListAdapter;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView.OnItemClickListener;
@@ -32,10 +35,26 @@ public class AddTaskActivity extends BaseActivity {
 		
 		new GetTaskListTask().execute();
 		
+		final Button btnAddTask = (Button) this.findViewById(R.id.btnAddTask);
+		final EditText etAddTask = (EditText) this.findViewById(R.id.etAddTask);
+		final RelativeLayout rlEditText = (RelativeLayout) this.findViewById(R.id.rlEditText);
+		
+		btnAddTask.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				btnAddTask.setVisibility(View.GONE);
+				rlEditText.setVisibility(View.VISIBLE);
+				if(etAddTask.requestFocus()) {
+					InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+					imm.showSoftInput(etAddTask, InputMethodManager.SHOW_IMPLICIT);
+				}
+			}
+		});
+		
 		//--------------------------------------------Ã≈“Œƒ€ —œ»— ¿----------------------------
 		ListView lvMain = (ListView) findViewById(R.id.lvShoppingList);
 		
-		//ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.names, R.layout.list_item);
 		adapter = new TaskListAdapter();
 		lvMain.setAdapter(adapter);
 		
