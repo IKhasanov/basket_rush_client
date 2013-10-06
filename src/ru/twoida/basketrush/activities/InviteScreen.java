@@ -78,8 +78,15 @@ public class InviteScreen extends BaseActivity implements OnClickListener {
 
 						editor.commit();
 						
-				    	Intent intent = new Intent(this, ListActivity.class);
-				        startActivity(intent);
+						if (user.getGender().equals("male")) {
+							Intent intent = new Intent(this, ListActivity.class);
+					        startActivity(intent);
+						} else {
+							if (user.getGender().equals("female")) {
+								Intent intent = new Intent(this, AddTaskActivity.class);
+								startActivity(intent);
+								}
+						}
 					}
 				}
 			}
