@@ -28,7 +28,6 @@ public class BasketRushAPISession {
 	
 	private static final String serverURI = "http://aistie.cloudapp.net";
 	private static final JSONObject jsnAll = null;
-	String secretKey = null;
 	
 	public User requestAccountCreation(final String login, final String gender, final String partnerLogin) {
 		final String methodURI = "/users/create";
@@ -57,16 +56,6 @@ public class BasketRushAPISession {
 				e.printStackTrace();
 			}
 			
-			try {
-				secretKey = jsn.getString("secretkey");
-				
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				
-			}
-			
-			Log.d("secret", secretKey);
 		User user = new User();
 		try {
 			user.mapUser(jsn);
@@ -77,7 +66,7 @@ public class BasketRushAPISession {
 		return user;
 	}
 	
-	public String requestRegId(final String regId)
+	public String requestRegId(final String login, final String secretKey, final String regId)
 	{
 		final String methodURI = "/users/set_push_id";
 		final String uri = formUriString(serverURI,methodURI);
@@ -87,7 +76,7 @@ public class BasketRushAPISession {
 		try {
 			
 			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(3);
-			nameValuePairs.add(new BasicNameValuePair("login","+79179140000"));
+			nameValuePairs.add(new BasicNameValuePair("login",login));
 		    nameValuePairs.add(new BasicNameValuePair("secret",secretKey));
 			nameValuePairs.add(new BasicNameValuePair("push_id", regId));
 	       
@@ -109,7 +98,7 @@ public class BasketRushAPISession {
 		return jsn == null ? "" : jsn.toString();
 	}
 	
-	public JSONObject requestList()
+	public JSONObject requestList(final String login, final String secretKey)
 	{
 		final String methodURI = "/users/list";
 		final String uri = formUriString(serverURI,methodURI);
@@ -117,7 +106,7 @@ public class BasketRushAPISession {
 		
 		try {
 			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
-			nameValuePairs.add(new BasicNameValuePair("login","+79179140000"));
+			nameValuePairs.add(new BasicNameValuePair("login",login));
 			nameValuePairs.add(new BasicNameValuePair("secret",secretKey));
 			try {
 				jsn = sendPostRequest(uri.toString(),new UrlEncodedFormEntity(nameValuePairs));
@@ -136,7 +125,7 @@ public class BasketRushAPISession {
 		
 	}
 	
-	public void requestDeleteListItem(String itemId)
+	public void requestDeleteListItem(String login, String secretKey, String itemId)
 	{
 		final String methodURI = "/users/removeitem";
 		final String uri = formUriString(serverURI,methodURI);
@@ -145,7 +134,7 @@ public class BasketRushAPISession {
 		
 		try {
 			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(3);
-			nameValuePairs.add(new BasicNameValuePair("login","+79179140000"));
+			nameValuePairs.add(new BasicNameValuePair("login",login));
 			nameValuePairs.add(new BasicNameValuePair("secret",secretKey));
 			nameValuePairs.add(new BasicNameValuePair("item_id",itemId));
 			try {
@@ -163,7 +152,7 @@ public class BasketRushAPISession {
 		}
 	}
 	
-	public String requestAddListItem(String title, String count, String photo)
+	public String requestAddListItem(String login, String secretKey, String title, String count, String photo)
 	{
 		final String methodURI = "/users/additem";
 		final String uri = formUriString(serverURI,methodURI);
@@ -172,7 +161,7 @@ public class BasketRushAPISession {
 		
 		try {
 			List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(5);
-			nameValuePairs.add(new BasicNameValuePair("login","+79179140000"));
+			nameValuePairs.add(new BasicNameValuePair("login",login));
 			nameValuePairs.add(new BasicNameValuePair("secret",secretKey));
 			nameValuePairs.add(new BasicNameValuePair("data[title]",title));
 			nameValuePairs.add(new BasicNameValuePair("data[count]",count));
